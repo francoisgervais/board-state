@@ -1,0 +1,259 @@
+/* Card tap/untap animation */
+.tapped {
+    transition: transform 1s;
+    transform: rotate(90deg);
+}
+.untapped {
+    transition: transform 1s;
+    transform: rotate(0deg);
+}
+
+.btn-card {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #bbb;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #198754;
+    margin-left: 4px;
+}
+
+/* Always show reload button except during export */
+.card .reload-btn {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.15s;
+}
+
+/* Layout and board containers (alphabetized) */
+.card {
+    border-radius: 10px;
+    height: 263px;
+    width: 188px;
+}
+.card-cost {
+    border-top-right-radius: 10px;
+    flex: 0 0 30%;
+    margin: 0px;
+    text-align: right;
+    width: 30%;
+}
+.card-header {
+    display: flex;
+    gap: 0px;
+    padding: 0px;
+}
+.card-footer {
+    display: flex;
+    gap: 0px;
+    padding: 0px;
+}
+.card-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.card-rules {
+    height: 169.3px;
+    min-height: 8em;
+    resize: none;
+    white-space: pre-wrap;
+}
+.card-stats {
+    border-bottom-right-radius: 10px;
+    margin-left: auto;
+    text-align: right;
+    width: 30%;
+}
+.card-title {
+    border-top-left-radius: 10px;
+    flex: 0 0 70%;
+    margin: 0px;
+    width: 70%;
+}
+.circle-btn {
+    align-items: center;
+    background: #fff;
+    border: 2px solid #bbb;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #0001;
+    color: #198754;
+    cursor: pointer;
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 48px;
+    justify-content: center;
+    margin: 0 6px;
+    outline: none;
+    user-select: none;
+    width: 48px;
+}
+.circle-btn.minus {
+    color: #dc3545;
+}
+.circle-btn.plus {
+    color: #198754;
+}
+.control-div {
+    align-items: center;
+    display: flex;
+    height: 263px;
+    justify-content: center;
+    position: relative;
+    transition: border-color 0.2s;
+    width: 200px;
+}
+.control-div .circle-btn {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s;
+}
+.control-div .circle-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+/* Control button style for export/reload */
+.ctrl-btn {
+    margin-bottom: 8px;
+}
+.enemy {
+    /* background-color moved to HTML as bg-warning */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 1/3 of height */
+    justify-content: space-evenly;
+    margin-bottom: 8px;
+}
+.enemy-board-container{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding-top: 10px;
+}
+.enemy-board-state{
+    display: flex;
+    flex: 1;
+    height: auto;
+    justify-content: center;
+}
+.enemy-board-stats{
+    height: 100%;
+    width: 200px;
+}
+html, body {
+    /* background-color moved to HTML as bg-white */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+.main {
+    /* background-color moved to HTML as bg-light */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px); /* 20px margin on all sides */
+    margin: 20px;
+    overflow: hidden;
+}
+/* Hides text but keeps element as a spacer */
+.placeholder-spacer {
+    color: transparent !important;
+    user-select: none !important;
+}
+.player {
+    /* background-color moved to HTML as bg-success */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 2; /* 2/3 of height */
+    justify-content: space-evenly;
+}
+.player-board-container{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding-top: 10px;
+}
+.player-board-state{
+    display: flex;
+    flex: 1;
+    height: auto;
+    justify-content: center;
+}
+.player-board-stats{
+    height: 100%;
+    width: 200px;
+}
+.player-hand-container{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding-top: 10px;
+}
+.player-hand-state{
+    display: flex;
+    flex: 1;
+    height: auto;
+    justify-content: center;
+}
+.player-hand-stats{
+    height: 100%;
+    width: 200px;
+}
+.player-hand-title {
+    padding-top: 20px;
+}
+/* Hide elements with .no-export when exporting */
+body.hide-on-export .no-export {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+body.hide-on-export .control-div {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+.stat-card{
+    padding: 8px;
+}
+.stat-card-input {
+    width: 60px;
+    margin-left: 0;
+}
+.stat-card-label {
+    display: block;
+    margin-bottom: 2px;
+    text-align: left;
+}
+.stat-card-label-row {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    text-align: left;
+}
+.stat-card-label-row:last-child {
+    margin-bottom: 0;
+}
+.stats-div {
+    align-items: center;
+    display: flex;
+    height: 263px;
+    justify-content: center;
+    position: relative;
+    width: 200px;
+    margin-right: 12px;
+}
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}
