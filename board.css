@@ -32,8 +32,8 @@
 /* Layout and board containers (alphabetized) */
 .card {
     border-radius: 10px;
-    height: 263px;
-    width: 188px;
+    height: 210px;
+    width: 150px;
 }
 .card-cost {
     border-top-right-radius: 10px;
@@ -102,7 +102,7 @@
 .control-div {
     align-items: center;
     display: flex;
-    height: 263px;
+    height: 210px;
     justify-content: center;
     position: relative;
     transition: border-color 0.2s;
@@ -135,7 +135,7 @@
     display: flex;
     flex-direction: row;
     height: auto;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 .enemy-board-state{
     display: flex;
@@ -151,16 +151,15 @@ html, body {
     /* background-color moved to HTML as bg-white */
     height: 100vh;
     margin: 0;
-    overflow: hidden;
+    font-size: 12px;;
 }
 .main {
     /* background-color moved to HTML as bg-light */
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    height: calc(100% - 40px); /* 20px margin on all sides */
-    margin: 20px;
-    overflow: hidden;
+    height: 100vh;
+    padding: 20px;
 }
 /* Hides text but keeps element as a spacer */
 .placeholder-spacer {
@@ -236,7 +235,7 @@ body.hide-on-export .control-div {
 .stat-card-label-row {
     display: block;
     margin-bottom: 8px;
-    font-size: 18px;
+    font-size: 14px;
     text-align: left;
 }
 .stat-card-label-row:last-child {
@@ -245,7 +244,7 @@ body.hide-on-export .control-div {
 .stats-div {
     align-items: center;
     display: flex;
-    height: 263px;
+    height: 210px;
     justify-content: center;
     position: relative;
     width: 200px;

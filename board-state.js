@@ -137,11 +137,11 @@ export function updateDynamicStats() {
             const statsInput = card.querySelector('.card-stats');
             if (typeInput && titleInput && statsInput) {
                 if (typeInput.value === 'Creature' && titleInput.value === 'Master') {
-                    statsInput.value = x + '/' + x;
+                    statsInput.value = x + ' / ' + x;
                 }
                 if (typeInput.value === 'Creature' && titleInput.value === 'Artificer') {
                     const val = 1 + artifactCount;
-                    statsInput.value = val + '/' + val;
+                    statsInput.value = val + ' / ' + val;
                 }
             }
         });
