@@ -208,9 +208,6 @@ html, body {
     height: 100%;
     width: 200px;
 }
-.player-hand-title {
-    padding-top: 20px;
-}
 /* Hide elements with .no-export when exporting */
 body.hide-on-export .no-export {
     visibility: hidden !important;
