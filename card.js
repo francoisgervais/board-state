@@ -7,15 +7,51 @@ export function createCardElement(cardData, poolType = 'board') {
         card.innerHTML = `<div class="card-header"><span class="text-danger">No card data</span></div>`;
         return card;
     }
+    if (!cardData) {
+        // Do not create a card if no data
+        return null;
+    }
     const card = document.createElement('div');
     card.className = 'card bg-light border position-relative untapped mx-5';
+    // Build dropdown for card-title, grouped and ordered by type/category
+    const cardPool = window.cardPool || [];
+    // Group cards by type, exclude Instants unless in hand
+    const typeMap = {};
+    cardPool.forEach(card => {
+        if (card.type === 'Instant' && poolType !== 'hand') return;
+        if (!typeMap[card.type]) typeMap[card.type] = [];
+        typeMap[card.type].push(card.title);
+    });
+    // Enforce order: Creature, Instant, Artifact, Enchantment
+    const typeOrder = poolType === 'hand'
+        ? ['Creature', 'Instant', 'Artifact', 'Enchantment']
+        : ['Creature', 'Artifact', 'Enchantment'];
+    let dropdownItems = '';
+    typeOrder.forEach(type => {
+        if (!typeMap[type]) return;
+        dropdownItems += `<li><h6 class="dropdown-header fw-bold">${type}</h6></li>`;
+        const titles = [...new Set(typeMap[type])].sort();
+        titles.forEach(title => {
+            dropdownItems += `<li><a class="dropdown-item" href="#">${title}</a></li>`;
+        });
+        dropdownItems += '<li><hr class="dropdown-divider"></li>';
+    });
+    // Remove last divider
+    dropdownItems = dropdownItems.replace(/<li><hr class=\"dropdown-divider\"><\/li>$/,'');
     card.innerHTML = `
         <div class="card-header">
-            <input class="card-title form-control form-control-sm" value="${cardData.title}" />
-            <input class="card-cost form-control form-control-sm" value="${cardData.cost}" />
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary btn-sm dropdown-toggle card-title-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    ${cardData.title}
+                </button>
+                <ul class="dropdown-menu">
+                    ${dropdownItems}
+                </ul>
+            </div>
+            <div class="card-cost form-control form-control-sm">${cardData.cost}</div>
         </div>
-        <input class="card-type form-control form-control-sm" value="${cardData.type}" />
-        <textarea class="card-rules form-control form-control-sm" wrap="soft">${cardData.rules}</textarea>
+        <div class="card-type form-control form-control-sm">${cardData.type}</div>
+        <div class="card-rules form-control form-control-sm">${cardData.rules}</div>
         <div class="card-footer">
             <button class="reload-btn btn btn-card btn-light p-0">
                 <i class="fa-solid fa-recycle"></i>
@@ -23,7 +59,7 @@ export function createCardElement(cardData, poolType = 'board') {
             <button class="tap-btn btn btn-card btn-light p-0">
                 <i class="fa-solid fa-arrow-rotate-right"></i>
             </button>
-            <input class="card-stats form-control form-control-sm" value="${cardData.stats}" />
+            <div class="card-stats form-control form-control-sm">${cardData.stats}</div>
         </div>
     `;
     card.querySelector('.reload-btn').addEventListener('click', function(e) {
@@ -34,6 +70,24 @@ export function createCardElement(cardData, poolType = 'board') {
             const newCard = createCard(poolType, window.cardPool);
             parent.replaceChild(newCard, card);
         }
+    });
+    // Dropdown logic for card-title
+    const dropdown = card.querySelector('.card-title-dropdown');
+    const menuItems = card.querySelectorAll('.dropdown-item');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const selectedTitle = this.textContent;
+            // Find card data by title
+            const newCardData = (window.cardPool || []).find(card => card.title === selectedTitle);
+            if (newCardData) {
+                const parent = card.parentElement;
+                if (parent) {
+                    const newCard = createCardElement(newCardData, poolType);
+                    parent.replaceChild(newCard, card);
+                }
+            }
+        });
     });
     card.querySelector('.tap-btn').addEventListener('click', function(e) {
         e.stopPropagation();
@@ -53,7 +107,7 @@ export function createCardElement(cardData, poolType = 'board') {
 export function createCard(poolType = 'board', cardPool) {
     let pool;
     if (!cardPool || !Array.isArray(cardPool) || cardPool.length === 0) {
-        return createCardElement(undefined, poolType);
+        return null;
     }
     if (poolType === 'hand') {
         // Favor instants 2:1 over other types in hand
@@ -65,7 +119,7 @@ export function createCard(poolType = 'board', cardPool) {
         pool = cardPool.filter(card => card.type === 'Creature' || card.type === 'Enchantment' || card.type === 'Artifact');
     }
     if (!pool || pool.length === 0) {
-        return createCardElement(undefined, poolType);
+        return null;
     }
     // Pick a random card from the pool
     const cardData = pool[Math.floor(Math.random() * pool.length)];

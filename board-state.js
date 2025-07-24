@@ -28,14 +28,17 @@ export function populateInitialCards(cardPool, createCardElement) {
             }
             // Only creatures for the rest
             const creaturePool = cardPool.filter(card => card.type === 'Creature');
+            if (creaturePool.length === 0) continue;
             const cardData = creaturePool[Math.floor(Math.random() * creaturePool.length)];
             const cardEl = createCardElement(cardData, 'board');
-            if (Math.random() < 1/3) {
-                cardEl.classList.remove('untapped');
-                cardEl.classList.add('tapped');
-                cardEl.classList.add('tapped-wide');
+            if (cardEl) {
+                if (Math.random() < 1/3) {
+                    cardEl.classList.remove('untapped');
+                    cardEl.classList.add('tapped');
+                    cardEl.classList.add('tapped-wide');
+                }
+                enemyRow.appendChild(cardEl);
             }
-            enemyRow.appendChild(cardEl);
         }
     }
     // Player board
@@ -59,14 +62,17 @@ export function populateInitialCards(cardPool, createCardElement) {
             }
             // Only creatures for the rest
             const creaturePool = cardPool.filter(card => card.type === 'Creature');
+            if (creaturePool.length === 0) continue;
             const cardData = creaturePool[Math.floor(Math.random() * creaturePool.length)];
             const cardEl = createCardElement(cardData, 'board');
-            if (Math.random() < 1/3) {
-                cardEl.classList.remove('untapped');
-                cardEl.classList.add('tapped');
-                cardEl.classList.add('tapped-wide');
+            if (cardEl) {
+                if (Math.random() < 1/3) {
+                    cardEl.classList.remove('untapped');
+                    cardEl.classList.add('tapped');
+                    cardEl.classList.add('tapped-wide');
+                }
+                playerRow.appendChild(cardEl);
             }
-            playerRow.appendChild(cardEl);
         }
     }
     // Player hand
@@ -74,7 +80,8 @@ export function populateInitialCards(cardPool, createCardElement) {
     if (handRow) {
         const count = Math.floor(Math.random() * 3) + 2;
         for (let i = 0; i < count; i++) {
-            handRow.appendChild(window.createCard('hand', cardPool));
+            const card = window.createCard('hand', cardPool);
+            if (card) handRow.appendChild(card);
         }
     }
 }
