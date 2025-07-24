@@ -139,9 +139,41 @@
                                 <button id="export-png-btn" class="btn btn-primary ctrl-btn no-export">Export board state</button>
                                 <button id="reload-btn" class="btn btn-secondary ctrl-btn no-export">Reload</button>
                                 <button id="reset-btn" class="btn btn-danger ctrl-btn no-export">Reset</button>
+                                <button id="create-card-btn" class="btn btn-success ctrl-btn no-export">Create card</button>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Card Creation Modal -->
+                <div class="modal fade" id="createCardModal" tabindex="-1" aria-labelledby="createCardModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content border-0 bg-transparent">
+                      <div class="card bg-light border position-relative mx-auto" style="border-radius: 10px; width: 22em; min-width: 18em;">
+                        <div class="card-header d-flex align-items-center p-2" style="border-top-left-radius: 10px; border-top-right-radius: 10px; background: #f8f9fa;">
+                          <input type="text" class="form-control form-control-sm fw-bold me-2" id="card-title-input" placeholder="Title" required style="width: 70%;">
+                          <input type="text" class="form-control form-control-sm text-end" id="card-cost-input" placeholder="Cost" required style="width: 30%;">
+                        </div>
+                        <div class="card-type form-control form-control-sm border-0 border-bottom rounded-0" style="background: #fff;"> 
+                          <select class="form-select form-select-sm border-0" id="card-type-input" required style="background: #fff;">
+                            <option value="Creature">Creature</option>
+                            <option value="Instant">Instant</option>
+                            <option value="Artifact">Artifact</option>
+                            <option value="Enchantment">Enchantment</option>
+                          </select>
+                        </div>
+                        <div class="card-rules form-control form-control-sm border-0 border-bottom rounded-0" style="background: #fff; height: 5em; min-height: 5em;">
+                          <textarea class="form-control form-control-sm border-0 h-100" id="card-rules-input" placeholder="Rules" style="background: #fff; resize: none;"></textarea>
+                        </div>
+                        <div class="card-footer d-flex align-items-center p-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background: #f8f9fa;">
+                          <input type="text" class="form-control form-control-sm text-end ms-auto" id="card-stats-input" placeholder="Stats" style="width: 40%;">
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 p-2 bg-transparent border-0">
+                          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-success btn-sm" id="add-card-modal-btn">Add card</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -150,6 +182,7 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="main.js"></script>
+    <script type="module" src="create-card-modal.js"></script>
 </body>
 </html>
 <script type="module" src="board-init.js"></script>
