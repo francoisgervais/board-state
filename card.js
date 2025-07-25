@@ -84,7 +84,14 @@ export function createCardElement(cardData, poolType = 'board') {
                 const parent = card.parentElement;
                 if (parent) {
                     const newCard = createCardElement(newCardData, poolType);
-                    parent.replaceChild(newCard, card);
+                    if (newCard) {
+                        // Preserve tap state classes
+                        ['tapped', 'untapped', 'tapped-wide'].forEach(cls => {
+                          if (card.classList.contains(cls)) newCard.classList.add(cls);
+                          else newCard.classList.remove(cls);
+                        });
+                        parent.replaceChild(newCard, card);
+                    }
                 }
             }
         });

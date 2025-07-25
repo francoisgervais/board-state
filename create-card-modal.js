@@ -97,7 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const newCardData = (window.cardPool || []).find(card => card.title === selectedTitle);
                 if (newCardData && cardElem && cardElem.parentElement && window.createCardElement) {
                   const newCard = window.createCardElement(newCardData, zoneType);
-                  cardElem.parentElement.replaceChild(newCard, cardElem);
+                  if (newCard) {
+                    // Preserve tap state classes
+                    ['tapped', 'untapped', 'tapped-wide'].forEach(cls => {
+                      if (cardElem.classList.contains(cls)) newCard.classList.add(cls);
+                      else newCard.classList.remove(cls);
+                    });
+                    cardElem.parentElement.replaceChild(newCard, cardElem);
+                  }
                 }
                 // Close dropdown after selection
                 const dropdownWrap = this.closest('.dropdown');
