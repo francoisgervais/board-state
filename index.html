@@ -16,46 +16,44 @@
     <div class="main bg-light">
         <!-- Enemy Section -->
         <div class="enemy bg-danger">
-            <div class="enemy-board-title title">
-                <div class="enemy-board-container">
-                    <div class="enemy-board-control control-div no-export" data-target="enemy-board-state">
-                        <button class="circle-btn minus" type="button" aria-label="Remove card">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
-                            </svg>
-                        </button>
-                        <button class="circle-btn plus" type="button" aria-label="Add card">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="11" y="5" width="2" height="14" rx="1" fill="currentColor" />
-                                <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
-                            </svg>
-                        </button>
+            <div class="enemy-board-container zoom">
+                <div class="enemy-board-control control-div no-export" data-target="enemy-board-state">
+                    <button class="circle-btn minus" type="button" aria-label="Remove card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button class="circle-btn plus" type="button" aria-label="Add card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="11" y="5" width="2" height="14" rx="1" fill="currentColor" />
+                            <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="enemy-board-state">
+                    <div class="d-flex flex-column bg-danger-subtle rounded p-3">
+                        <span class="title">Enemy Board</span>
+                        <div class="card-row" id="enemy-board-row"></div>
                     </div>
-                    <div class="enemy-board-state">
-                        <div class="d-flex flex-column bg-danger-subtle rounded p-3">
-                            <span class="title">Enemy Board</span>
-                            <div class="card-row" id="enemy-board-row"></div>
-                        </div>
-                    </div>
-                    <div class="enemy-board-stats stats-div">
-                        <div class="d-flex flex-column">
-                            <span class="title d-block mb-2 placeholder-spacer">placeholder</span>
-                            <div class="card-row">
-                                <div class="card bg-light border stat-card">
-                                    <label class="stat-card-label">Enemy</label>
-                                    <div class="stat-card-label-row">
-                                        <label class="stat-card-label">Life: </label>
-                                    <input type="text" class="form-control form-control-sm stat-card-input life-enemy" />
-                                    </div>
-                                
-                                    <div class="stat-card-label-row">
-                                        <label class="stat-card-label">Mana available: </label>
-                                        <input type="text" class="form-control form-control-sm stat-card-input mana-enemy" />
-                                    </div>
-                                    <div class="stat-card-label-row">
-                                        <label class="stat-card-label">Cards in hand: </label>
-                                        <input type="text" class="form-control form-control-sm stat-card-input hand-enemy" />
-                                    </div>
+                </div>
+                <div class="enemy-board-stats stats-div">
+                    <div class="d-flex flex-column">
+                        <span class="title d-block mb-2 placeholder-spacer">placeholder</span>
+                        <div class="card-row">
+                            <div class="card bg-light border stat-card">
+                                <label class="stat-card-label">Enemy</label>
+                                <div class="stat-card-label-row">
+                                    <label class="stat-card-label">Life: </label>
+                                <input type="text" class="form-control form-control-sm stat-card-input life-enemy" />
+                                </div>
+                            
+                                <div class="stat-card-label-row">
+                                    <label class="stat-card-label">Mana available: </label>
+                                    <input type="text" class="form-control form-control-sm stat-card-input mana-enemy" />
+                                </div>
+                                <div class="stat-card-label-row">
+                                    <label class="stat-card-label">Cards in hand: </label>
+                                    <input type="text" class="form-control form-control-sm stat-card-input hand-enemy" />
                                 </div>
                             </div>
                         </div>
@@ -66,28 +64,27 @@
 
         <!-- Player Section -->
         <div class="player bg-success">
-            <div class="player-board-title title">
-                <div class="player-board-container">
-                    <div class="player-board-control control-div no-export" data-target="player-board-state">
-                        <button class="circle-btn minus" type="button" aria-label="Remove card">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
-                            </svg>
-                        </button>
-                        <button class="circle-btn plus" type="button" aria-label="Add card">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="11" y="5" width="2" height="14" rx="1" fill="currentColor" />
-                                <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
-                            </svg>
-                        </button>
+            <div class="player-board-container zoom">
+                <div class="player-board-control control-div no-export" data-target="player-board-state">
+                    <button class="circle-btn minus" type="button" aria-label="Remove card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button class="circle-btn plus" type="button" aria-label="Add card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="11" y="5" width="2" height="14" rx="1" fill="currentColor" />
+                            <rect x="5" y="11" width="14" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="player-board-state">
+                    <div class="d-flex flex-column bg-success-subtle rounded p-3">
+                        <span class="title">Player Board</span>
+                        <div class="card-row" id="player-board-row"></div>
                     </div>
-                    <div class="player-board-state">
-                        <div class="d-flex flex-column bg-success-subtle rounded p-3">
-                            <span class="title">Player Board</span>
-                            <div class="card-row" id="player-board-row"></div>
-                        </div>
-                    </div>
-                    <div class="player-board-stats stats-div">
+                </div>
+                <div class="player-board-stats stats-div">
                     <div class="d-flex flex-column">
                         <span class="title d-block mb-2 placeholder-spacer">placeholder</span>
                         <div class="card-row">
@@ -110,8 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="player-hand-title title">
-            <div class="player-hand-container">
+            <div class="player-hand-container zoom">
                 <div class="player-hand-control control-div no-export" data-target="player-hand-state">
                     <button class="circle-btn minus" type="button" aria-label="Remove card">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +121,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="player-hand-state">
+                <div class="player-hand-state zoom">
                     <div class="d-flex flex-column bg-success-subtle rounded p-3">
                         <span class="title d-block mb-2">Player Hand</span>
                         <div class="card-row my-cards-row" id="player-hand-row"></div>
@@ -144,36 +140,34 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card Creation Modal -->
-                <div class="modal fade" id="createCardModal" tabindex="-1" aria-labelledby="createCardModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
+            </div>
+            <!-- Card Creation Modal -->
+            <div class="modal fade" id="createCardModal" tabindex="-1" aria-labelledby="createCardModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
                     <div class="modal-content border-0 bg-transparent">
-                      <div class="card bg-light border position-relative mx-auto" style="border-radius: 10px; width: 22em; min-width: 18em;">
-                        <div class="card-header d-flex align-items-center p-2" style="border-top-left-radius: 10px; border-top-right-radius: 10px; background: #f8f9fa;">
-                          <input type="text" class="form-control form-control-sm fw-bold me-2" id="card-title-input" placeholder="Title" required style="width: 70%;">
-                          <input type="text" class="form-control form-control-sm text-end" id="card-cost-input" placeholder="Cost" required style="width: 30%;">
-                        </div>
+                        <div class="card bg-light border position-relative mx-auto" style="border-radius: 10px; width: 22em; min-width: 18em;">
+                            <div class="card-header d-flex align-items-center p-2" style="border-top-left-radius: 10px; border-top-right-radius: 10px; background: #f8f9fa;">
+                                <input type="text" class="form-control form-control-sm fw-bold me-2" id="card-title-input" placeholder="Title" required style="width: 70%;">
+                                <input type="text" class="form-control form-control-sm text-end" id="card-cost-input" placeholder="Cost" required style="width: 30%;">
+                            </div>
                         <div class="card-type form-control form-control-sm border-0 border-bottom rounded-0" style="background: #fff;"> 
-                          <select class="form-select form-select-sm border-0" id="card-type-input" required style="background: #fff;">
-                            <option value="Creature">Creature</option>
-                            <option value="Instant">Instant</option>
-                            <option value="Artifact">Artifact</option>
-                            <option value="Enchantment">Enchantment</option>
-                          </select>
+                            <select class="form-select form-select-sm border-0" id="card-type-input" required style="background: #fff;">
+                                <option value="Creature">Creature</option>
+                                <option value="Instant">Instant</option>
+                                <option value="Artifact">Artifact</option>
+                                <option value="Enchantment">Enchantment</option>
+                            </select>
                         </div>
-                        <div class="card-rules form-control form-control-sm border-0 border-bottom rounded-0" style="background: #fff; height: 5em; min-height: 5em;">
-                          <textarea class="form-control form-control-sm border-0 h-100" id="card-rules-input" placeholder="Rules" style="background: #fff; resize: none;"></textarea>
-                        </div>
-                        <div class="card-footer d-flex align-items-center p-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background: #f8f9fa;">
-                          <input type="text" class="form-control form-control-sm text-end ms-auto" id="card-stats-input" placeholder="Stats" style="width: 40%;">
-                        </div>
-                        <div class="d-flex justify-content-end gap-2 p-2 bg-transparent border-0">
-                          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-                          <button type="button" class="btn btn-success btn-sm" id="add-card-modal-btn">Add card</button>
-                        </div>
-                      </div>
+                    <div class="card-rules form-control form-control-sm border-0 border-bottom rounded-0" style="background: #fff; height: 5em; min-height: 5em;">
+                        <textarea class="form-control form-control-sm border-0 h-100" id="card-rules-input" placeholder="Rules" style="background: #fff; resize: none;"></textarea>
                     </div>
-                  </div>
+                    <div class="card-footer d-flex align-items-center p-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background: #f8f9fa;">
+                        <input type="text" class="form-control form-control-sm text-end ms-auto" id="card-stats-input" placeholder="Stats" style="width: 40%;">
+                    </div>
+                    <div class="d-flex justify-content-end gap-2 p-2 bg-transparent border-0">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-success btn-sm" id="add-card-modal-btn">Add card</button>
+                    </div>
                 </div>
             </div>
         </div>
